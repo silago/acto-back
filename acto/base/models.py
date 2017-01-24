@@ -3,6 +3,10 @@ from solo.models import SingletonModel
 from tinymce.models import HTMLField
 
 #base blocks
+class TripleTextItem(models.Model):
+    text    = HTMLField()
+    name  = models.CharField(max_length=255,blank=True, default="")
+    city  = models.CharField(max_length=255,blank=True, default="")
 class TextItem(models.Model):
     order   = models.IntegerField()
     caption = HTMLField()
@@ -14,6 +18,7 @@ class ImageItem(models.Model):
 
 class TextDoubleImageItem(models.Model):
     image  = models.ImageField()
+    subimage  = models.ImageField()
     text     = HTMLField()
     order = models.IntegerField()
 
@@ -21,6 +26,8 @@ class TextImageItem(models.Model):
     image  = models.ImageField()
     text     = HTMLField()
     order  = models.IntegerField()
+    def __str__(this):
+        return this.image.url
 # Create your models here.
 
 
@@ -45,6 +52,13 @@ class TopPage(BaseSingletonPage):
 class ForPage(BaseSingletonPage):
     items = models.ManyToManyField(ImageItem)
 
+class OrangePage(BaseSingletonPage):
+    items = models.ManyToManyField(ImageItem)
+
+class YellowPage(BaseSingletonPage):
+    text  = HTMLField(blank=True,default='')
+    items = models.ManyToManyField(TripleTextItem)
+
 
 class MintPage(BaseSingletonPage):
     left_image = models.ImageField()
@@ -54,8 +68,6 @@ class MintPage(BaseSingletonPage):
 
 class FactsPage(BaseSingletonPage):
     items = models.ManyToManyField(TextImageItem)
-    free_delivery_button = models.ImageField()
-    no_delivery_button  = models.ImageField()
 
 
 class GreenPage(BaseSingletonPage):

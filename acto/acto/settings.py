@@ -24,6 +24,8 @@ SECRET_KEY = '6s@m=+gjntc1o@%cfxub3o50%t=1zgxn=izzf2_rz$%oq80)y9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 ALLOWED_HOSTS = []
 
@@ -37,6 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'base',
+    'solo',
+    'tinymce'
 ]
 
 MIDDLEWARE = [
@@ -117,4 +122,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL =  '/static/'
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')

@@ -1,70 +1,92 @@
 from django.db import models
 from solo.models import SingletonModel
+from tinymce.models import HTMLField
+
+#base blocks
+class TextItem(models.Model):
+    order   = models.IntegerField()
+    caption = HTMLField()
+    text    = HTMLField()
+
+class ImageItem(models.Model):
+    image  = models.ImageField()
+    order  = models.IntegerField()
+
+class TextDoubleImageItem(models.Model):
+    image  = models.ImageField()
+    text     = HTMLField()
+    order = models.IntegerField()
+
+class TextImageItem(models.Model):
+    image  = models.ImageField()
+    text     = HTMLField()
+    order  = models.IntegerField()
+# Create your models here.
+
 
 # django singleton
 class BaseSingletonPage(SingletonModel):
-    active = models.BoolField()
-    title  = models.CharField()
-    slug   = models.CharField()
-    css    = models.CharField()
-    template = models.CharField()
-    js     = models.CharField()
+    logo   = models.ImageField(blank=True,default='')
+    active = models.BooleanField(default=True)
+    title  = models.CharField(max_length=255,blank=True, default="")
+    slug   = models.CharField(max_length=255,blank=True, default="")
+    css    = models.CharField(max_length=255,blank=True, default="")
+    template = models.CharField(max_length=255,blank=True, default="")
+    js     = models.CharField(max_length=255,blank=True, default="")
 
 class TopPage(BaseSingletonPage):
-    #items = models.ManyToManyField()
-    background
-    image
-    text
-    banner
-    free_delivery_button =
-    no_delivery_button =
+    backgound = models.ImageField(blank=True,default='')
+    image = models.ImageField(blank=True,default='')
+    text  = HTMLField(blank=True,default='')
+    banner= models.ImageField(blank=True,default='')
+    free_delivery_button =  models.ImageField(blank=True,default='')
+    no_delivery_button   =  models.ImageField(blank=True,default='')
 
-class FaqPage(BaseSingletonPage):
-    items = ManyToManyField(ImageItem)
+class ForPage(BaseSingletonPage):
+    items = models.ManyToManyField(ImageItem)
 
 
-class CyanPage(BaseSingletonPage):
-    leftImage
-    rightImage
-    caption
+class MintPage(BaseSingletonPage):
+    left_image = models.ImageField()
+    right_image = models.ImageField()
+    caption = HTMLField()
 
 
 class FactsPage(BaseSingletonPage):
     items = models.ManyToManyField(TextImageItem)
-    free_delivery_button =
-    no_delivery_button =
+    free_delivery_button = models.ImageField()
+    no_delivery_button  = models.ImageField()
 
-class CyanPage(BaseSingletonPage):
-    items = models.ManyToManyField(TextImageItem)
 
 class GreenPage(BaseSingletonPage):
+    caption = HTMLField()
     items = models.ManyToManyField(TextImageItem)
+    free_delivery_button = models.ImageField()
+    no_delivery_button  = models.ImageField()
+
+class WhyPage(BaseSingletonPage):
+    items = models.ManyToManyField(TextImageItem)
+
 
 class HowPage(BaseSingletonPage):
-    caption
-    logo
+    caption = HTMLField()
     items = models.ManyToManyField(TextDoubleImageItem)
 
-class PageFaq():
-    caption
-    items = models.ManyToManyField(TextImageItem)
+class FaqPage(BaseSingletonPage):
+    items = models.ManyToManyField(TextItem)
 
-class TextItem(models.Model):
-    order
-    caption
-    text
+class DocsPage(BaseSingletonPage):
+    items = models.ManyToManyField(ImageItem)
 
-class ImageItem(models.Model):
-    image =
-    order =
 
-class TextDoubleImageItem(models.Model):
-    image =
-    text =
-    order =
+class City(models.Model):
+    name = models.CharField(max_length=255)
+    x    = models.FloatField()
+    y    = models.FloatField()
 
-class TextImageItem(models.Model):
-    image =
-    text =
-    order =
-# Create your models here.
+class Shop(models.Model):
+    name = models.CharField(max_length=255)
+    address = models.CharField(max_length=255)
+    x    = models.FloatField()
+    y    = models.FloatField()
+

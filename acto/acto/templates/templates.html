@@ -1,0 +1,298 @@
+
+        <div id="banner-top">
+            <div class="left"
+                style="background-image:url('{{data.image}}');">
+                <div class="text-info">
+                    <!-- <img src="akto-box-photo.png" /> -->
+                    {{data.logo}}
+                    <span>
+                        <!-- Жидкая аэрозольная повязка&nbsp;Актовитдерм® -->
+                        {{data.title}}
+                    </span>
+                </div>
+            </div>
+            <div class="right">
+                <!-- <img class="banner" src="top/banner-free.png" /> -->
+                {{data.free_delivery_button}}
+                <br/>
+                <img class="button" src="top/button.png" />
+            </div>
+        </div>
+        <div class="clear"></div>
+        
+        <!-- end page -->
+
+
+        <div id="page-for">
+            <ul>
+                {% for image in data.images %}
+                <li>
+					<!-- <img src="for/abrasion.png" /> -->
+                    {{ image }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- end page -->
+
+        <div id="page-mint">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    {{ data.caption }}
+                    <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit. -->
+                </div>
+                <!-- <img class="logo" src="mint/logo-mint.png" /> -->
+                {{data.logo}}
+                <!-- <img class="hands" src="mint/hands.png" /> -->
+                {{data.left_image}}
+            </div>
+            <div class="triangle-down"> </div>
+            <!-- <img class="info" src="mint/infographic.png" /> -->
+            {{data.right_image}}
+        </div>
+
+        <!-- end page -->
+
+        <div id="page-facts">
+            <!-- <img class="logo" src="facts/zag-fakts.png" /> -->
+                {{data.logo}}
+            <ul>
+                {%  for item in data.items %}
+                <li>
+
+                    <div>
+                    <!-- <img src="facts/20.png" /> -->
+                    {{ item.image }}
+                    <div class="{{item.data}}">
+                        {{ item.text }}
+                         <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                    </div>
+                    </div>
+                </li>
+                <!-- <li> -->
+                <!--     <div> -->
+                <!--     <img src="facts/24.png" /> -->
+                <!--     <div class="w202"> -->
+                <!--          Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                <!--     </div> -->
+                <!--     </div> -->
+                <!-- </li> -->
+                <!-- <li> -->
+                <!--     <div> -->
+                <!--     <img src="facts/150.png" /> -->
+                <!--     <div class="w234"> -->
+                <!--          Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                <!--     </div> -->
+                <!--     </div> -->
+                <!-- </li> -->
+                <!-- <li> -->
+                <!--     <div> -->
+                <!--     <img src="facts/200.png" /> -->
+                <!--     <div class="w283"> -->
+                <!--          Lorem ipsum dolor sit amet, consectetur adipiscing elit. -->
+                <!--     </div> -->
+                <!--     </div> -->
+                <!-- </li> -->
+            </ul>
+        </div>
+
+        <!-- end page -->
+
+        <div id="page-green">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    {{data.caption}}
+                    <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit. -->
+                </div>
+           <!-- <img class="logo" src="green/logo-green.png" /> -->
+           {{data.logo}}
+            <span class="starts"> </span>
+
+            <span class="arrow-left">
+                <img src="green/arrow-left.png" />
+            </span>
+
+            <ul>
+              {% for item in data.items %}
+                <li>
+                    {{ item.image }}
+                    <span>
+                        {{item.text}}
+                    </span>
+                </li>
+
+              {% endfor %}
+              <!-- <li class="active"> -->
+              <!--    <img src="green/dot1.png" /> -->
+              <!--    <span> -->
+              <!--        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit. Pellentesque facilisis et leo id finibus. -->
+              <!--        <br/> -->
+              <!--        Pellentesque consequat turpis non faucibus scelerisque. Curabitur mattis sem nec nisl fringilla, tristique tempus urna aliquam. Morbi molestie, massa sit amet efficitur auctor, mi ex ornare felis, non luctus nibh est et risus. Nunc quis vehicula eros. Ut nec rutrum tellus, sit amet ultricies lorem. Curabitur vitae libero sit amet dui mollis fermentum nec vel ipsum. Praesent fringilla ultrices tortor, non tempus elit placerat sed. -->
+              <!--    </span> -->
+             <!-- </li> -->
+              <!-- <li> -->
+              <!--    <img src="green/dot2.png" /> -->
+             <!-- </li> -->
+              <!-- <li> -->
+              <!--    <img src="green/dot3.png" /> -->
+             <!-- </li> -->
+            </uL>
+            <span class="arrow-right">
+				<img src="green/arrow-right.png" />
+			</span>
+            <div class="banner">
+               <!-- <img src="green/buy-now.png" /> -->
+               {{data.free_delivery_button}}
+
+               <br />
+               <br />
+               <img src="green/button.png" />
+            </div>
+            </div>
+            <div class="triangle-down"></div>
+        </div>
+
+
+        <!-- end page -->
+
+
+        <div id="page-why">
+            <!-- <img class="logo" src="why/why-logo.png" /> -->
+            {{ data.logo }}
+            <ul>
+                {% for item in data.items }}
+                <li>
+
+                    <div>
+                    <!-- <img src="why/1.png" /> -->
+                    {{item.image}}
+                    <div class="w196">
+                        {{item.text}}
+                         <!-- Lorem ipsum dolor sit amet. -->
+                    </div>
+                    </div>
+                </li>
+                {% endfor %}
+                <!-- <li> -->
+                <!--     <div> -->
+                <!--     <img src="why/2.png" /> -->
+                <!--     <div class=""> -->
+                <!--          Lorem ipsum dolor sit amet. -->
+                <!--     </div> -->
+                <!--     </div> -->
+                <!-- </li> -->
+                <!-- <li> -->
+                <!--     <div> -->
+                <!--     <img src="why/3.png" /> -->
+                <!--     <div class=""> -->
+                <!--          Lorem ipsum dolor sit amet. -->
+                <!--     </div> -->
+                <!--     </div> -->
+                <!-- </li> -->
+                <!-- <li> -->
+                <!--     <div> -->
+                <!--     <img src="why/4.png" /> -->
+                <!--     <div class=""> -->
+                <!--          Lorem ipsum dolor sit amet. -->
+                <!--     </div> -->
+                <!--     </div> -->
+                <!-- </li> -->
+                <!-- <li> -->
+                <!--     <div> -->
+                <!--     <img src="why/5.png" /> -->
+                <!--     <div class=""> -->
+                <!--          Lorem ipsum dolor sit amet. -->
+                <!--     </div> -->
+                <!--     </div> -->
+                <!-- </li> -->
+            </ul>
+        </div>
+
+
+        <!-- end page -->
+
+
+
+
+        <div id="page-blue">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    {{data.caption}}
+                    <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit. -->
+                </div>
+           <!-- <img class="logo" src="blue/logo-blue.png" /> -->
+           {{data.logo}}
+           <ul>
+               {% for item in data.items %}
+               <li>
+                    <span>
+                        {{ item.image}}
+                    </span>
+                    <div>
+                        <span>
+                            {{item.subimage}}
+                       </span> 
+                       {{item.text}}
+
+                    </div>
+               </li>
+               {% endifor %}
+           </uL>
+            </div>
+            <div class="triangle-down">
+			</div>
+        </div>
+
+
+        <!-- end page -->
+
+
+
+        <div id="page-faq">
+            <div class="logo">
+                <!-- <img src="faq/faq-logo.png" /> -->
+                {{data.logo}}
+            </div>
+            <ul class="list">
+                {% for item in data.items %}
+                <li class="active">
+                <h5>{{item.caption}}
+                    <!-- Как помогает? -->
+                </h5>
+                    <span class="answer">
+                        {{item.text}}
+                        <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum maximus augue, ut interdum turpis euismod ac. In et sem eget purus consequat volutpat. Curabitur in metus in nunc imperdiet suscipit. Nullam sed lectus pulvinar, consequat magna quis, consequat justo. Aenean quis eleifend massa, eu pharetra lorem. In ut leo nibh. Sed euismod quam sem, non vulputate dui vehicula et. -->
+                    </span>
+                </li>
+                {% endfor %}
+                <!-- <li> -->
+                <!--     <h5>Как помогает?</h5> -->
+                <!--     <span class="answer"> -->
+                <!--         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum maximus augue, ut interdum turpis euismod ac. In et sem eget purus consequat volutpat. Curabitur in metus in nunc imperdiet suscipit. Nullam sed lectus pulvinar, consequat magna quis, consequat justo. Aenean quis eleifend massa, eu pharetra lorem. In ut leo nibh. Sed euismod quam sem, non vulputate dui vehicula et. -->
+                <!--     </span> -->
+                <!-- </li> -->
+            </ul>
+            <div class="side">
+                <h4> Не нашли ответ? </h4>
+                <h5> Задайте вопрос! </h5>
+                <form>
+                    <input type=text placeholder="ВАШЕ ИМЯ" />
+                    <input type=text placeholder="ВАШЕ ИМЯ" />
+                    <input type=text placeholder="ВАШЕ ИМЯ" />
+                    <textarea placeholder="ВАШЕ ВОПРОС"></textarea>
+                    <input type=text placeholder="АНТИ СПАМ КОД" />
+                <button><img src="faq/button.png" /> </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- end page -->
+        <!-- end page -->
+        <!-- end page -->
+        <!-- end page -->
+        <!-- end page -->
+        <!-- end page -->

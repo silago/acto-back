@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 class TripleTextItem(models.Model):
     text    = HTMLField()
     name  = models.CharField(max_length=255,blank=True, default="")
-    city  = models.CharField(max_length=255,blank=True, default="")
+    subtext  = models.CharField(max_length=255,blank=True, default="")
 class TextItem(models.Model):
     order   = models.IntegerField()
     caption = HTMLField()

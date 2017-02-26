@@ -1,0 +1,16 @@
+        <div id="page-why">
+            <img class="logo" src="{{page.logo.url}}" />
+            <ul>
+                {% for item in page.items.all %}
+                <li>
+
+                    <div>
+                        <img src="{{item.image.url}}" />
+                    <div class="w196">
+                        {{item.text|safe}}
+                    </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>

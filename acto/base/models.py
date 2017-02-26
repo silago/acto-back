@@ -1,12 +1,22 @@
 from django.db import models
 from solo.models import SingletonModel
 from tinymce.models import HTMLField
+from django.conf import settings
+import os
 
+class TemplateItem(models.Model):
+    name  = models.CharField(max_length=255,blank=True, null=True, default="")
+    template  = models.FileField()
+    def __str__(this):
+        return this.name
 #base blocks
 class TripleTextItem(models.Model):
     text    = HTMLField()
-    name  = models.CharField(max_length=255,blank=True, default="")
-    subtext  = models.CharField(max_length=255,blank=True, default="")
+    name  = models.CharField(max_length=255,blank=True, null=True, default="")
+    subtext  = models.CharField(max_length=255,blank=True, null=True, default="")
+    def __str__(this):
+        return this.name+ ' ' + this.text
+
 class TextItem(models.Model):
     order   = models.IntegerField()
     caption = HTMLField()
@@ -15,12 +25,26 @@ class TextItem(models.Model):
 class ImageItem(models.Model):
     image  = models.ImageField()
     order  = models.IntegerField()
+    def __str__(this):
+        return this.image.url
+
+
+class DoubleTextDoubleImageItem(models.Model):
+    image  = models.ImageField()
+    subimage  = models.ImageField()
+    caption  = models.CharField(max_length=255,blank=True, null=True, default="")
+    text  = models.CharField(max_length=255,blank=True, null=True, default="")
+    order = models.IntegerField()
+    def __str__(this):
+        return this.image.url + ' ' + this.text
 
 class TextDoubleImageItem(models.Model):
     image  = models.ImageField()
     subimage  = models.ImageField()
     text     = HTMLField()
     order = models.IntegerField()
+    def __str__(this):
+        return this.image.url + ' ' + this.text
 
 class TextImageItem(models.Model):
     image  = models.ImageField()
@@ -32,73 +56,97 @@ class TextImageItem(models.Model):
 
 
 # django singleton
-class BaseSingletonPage(SingletonModel):
-    logo   = models.ImageField(blank=True,default='')
+
+class BaseSingletonModel(SingletonModel):
+    def TemplatesList():
+        tdir = settings.TEMPLATES[0]['DIRS'][0]
+        result =  ((i,i) for i in os.listdir(tdir))
+        return result
+    logo   = models.ImageField(blank=True, null=True,default='')
     active = models.BooleanField(default=True)
-    title  = models.CharField(max_length=255,blank=True, default="")
-    slug   = models.CharField(max_length=255,blank=True, default="")
-    css    = models.CharField(max_length=255,blank=True, default="")
-    template = models.CharField(max_length=255,blank=True, default="")
-    js     = models.CharField(max_length=255,blank=True, default="")
+    title  = models.CharField(max_length=255,blank=True, null=True, default="")
+    slug   = models.CharField(max_length=255,blank=True, null=True, default="")
+    template = models.CharField(max_length=255,blank=True, null=True,default="",choices = TemplatesList())
+    order   = models.IntegerField(default=1)
 
-class TopPage(BaseSingletonPage):
-    backgound = models.ImageField(blank=True,default='')
-    image = models.ImageField(blank=True,default='')
-    text  = HTMLField(blank=True,default='')
-    banner= models.ImageField(blank=True,default='')
-    free_delivery_button =  models.ImageField(blank=True,default='')
-    no_delivery_button   =  models.ImageField(blank=True,default='')
+    class Meta:
+        abstract = True
 
-class ForPage(BaseSingletonPage):
+
+class TopPage(BaseSingletonModel):
+    backgound = models.ImageField(blank=True, null=True,default='')
+    image = models.ImageField(blank=True, null=True,default='')
+    text  = HTMLField(blank=True, null=True,default='')
+    banner= models.ImageField(blank=True, null=True,default='')
+    free_delivery_button =  models.ImageField(blank=True, null=True,default='')
+    no_delivery_button   =  models.ImageField(blank=True, null=True,default='')
+
+class ForPage(BaseSingletonModel):
     items = models.ManyToManyField(ImageItem)
 
-class OrangePage(BaseSingletonPage):
+class OrangePage(BaseSingletonModel):
     items = models.ManyToManyField(ImageItem)
 
-class YellowPage(BaseSingletonPage):
-    text  = HTMLField(blank=True,default='')
+class YellowPage(BaseSingletonModel):
+    #text  = HTMLField(blank=True, null=True,default='')
     items = models.ManyToManyField(TripleTextItem)
 
 
-class MintPage(BaseSingletonPage):
+class MintPage(BaseSingletonModel):
     left_image = models.ImageField()
     right_image = models.ImageField()
     caption = HTMLField()
 
 
-class FactsPage(BaseSingletonPage):
+class FactsPage(BaseSingletonModel):
     items = models.ManyToManyField(TextImageItem)
 
 
-class GreenPage(BaseSingletonPage):
+class GreenPage(BaseSingletonModel):
     caption = HTMLField()
     items = models.ManyToManyField(TextImageItem)
     free_delivery_button = models.ImageField()
     no_delivery_button  = models.ImageField()
 
-class WhyPage(BaseSingletonPage):
+class WhyPage(BaseSingletonModel):
     items = models.ManyToManyField(TextImageItem)
 
 
-class HowPage(BaseSingletonPage):
+class HowPage(BaseSingletonModel):
     caption = HTMLField()
-    items = models.ManyToManyField(TextDoubleImageItem)
+    items = models.ManyToManyField(DoubleTextDoubleImageItem)
 
-class FaqPage(BaseSingletonPage):
+class FaqPage(BaseSingletonModel):
     items = models.ManyToManyField(TextItem)
 
-class DocsPage(BaseSingletonPage):
+class DocsPage(BaseSingletonModel):
     items = models.ManyToManyField(ImageItem)
+
+class FooterPage(BaseSingletonModel):
+    items = models.ManyToManyField(TextImageItem)
+    link = models.CharField(max_length=255)
+    image = models.ImageField()
+    pass
+
+
+class BottomPage(BaseSingletonModel):
+    #map page
+    free_delivery_button = models.ImageField()
+    no_delivery_button   = models.ImageField()
+    image   = models.ImageField()
+    #def getCities():
+    #    City.get.all()
+    #    pass
 
 
 class City(models.Model):
     name = models.CharField(max_length=255)
+    active = models.BooleanField(default=False)
     x    = models.FloatField()
     y    = models.FloatField()
 
 class Shop(models.Model):
     name = models.CharField(max_length=255)
-    address = models.CharField(max_length=255)
     x    = models.FloatField()
     y    = models.FloatField()
 

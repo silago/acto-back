@@ -1,0 +1,15 @@
+        <div id="page-facts">
+            <img class="logo" src="{{page.logo.url}}" />
+            <ul>
+                {%  for item in page.items.all|dictsort:"order" %}
+                <li>
+                    <div>
+                        <img src="{{item.image.url}}" /> 
+                        <div class="{{item.page}}">
+                            {{ item.text|striptags }}
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>

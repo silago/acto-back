@@ -1,0 +1,41 @@
+        <div id="page-green">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    {{page.caption|striptags}}
+                    <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit. -->
+                </div>
+                <img class="logo" src="{{page.logo.url}}" />
+            <span class="starts"> </span>
+
+            <span class="arrow-left">
+                <img src="static/green/arrow-left.png" />
+            </span>
+
+            <ul>
+              {% for item in page.items.all %}
+                <li>
+                    <img  src="{{ item.image.url }}" />
+                    <span>
+                        {{item.text|striptags}}
+                    </span>
+                </li>
+              {% endfor %}
+            </uL>
+            <script>
+                $('#page-green ul li').first().addClass('active');
+            </script>
+            <span class="arrow-right">
+				<img src="static/green/arrow-right.png" />
+			</span>
+            <div class="banner">
+               <!-- <img src="green/buy-now.png" /> -->
+               <img src="{{page.free_delivery_button.url}}" />
+
+               <br />
+               <br />
+               <img src="static/green/button.png" />
+            </div>
+            </div>
+            <div class="triangle-down"></div>
+        </div>

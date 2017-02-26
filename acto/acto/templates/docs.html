@@ -1,0 +1,12 @@
+        <div id="page-docs">
+            <div class="content">
+                <img src="{{ page.logo.url }}" class="logo" />
+                <ul>
+                    {% for item in page.items.all %}
+                    <li>
+                        <img src="{{item.url}}" />
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>

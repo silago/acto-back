@@ -1,0 +1,38 @@
+        <div id="page-yellow">
+		
+            <div class="arrow-holder">
+            <div class="triangle-up"> </div>
+            </div>
+            <div class="content">
+                <div class="text-info">
+                    {{ page.title }}
+                </div>
+                <img class="logo" src="{{page.logo.url}}" />
+                <div class="items">
+                <img src="/static/yellow/top.png" style="width:100%;"/>
+                    <ul
+                        style=""
+                    >
+                    {% for item in page.items.all %}
+                        <li>
+                            <div class="list-item">
+                                <span>
+                                    {{item.text|safe}}
+                                </span>
+                                <div>
+                                <b>
+                                    {{item.name}}
+                                </b>
+                                <label>
+                                    {{item.subtext}}
+                                </label>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <img src="static/yellow/bottom.png" style="width:100%;"/>
+                    </div>
+            </div>
+            <div class="clear"> </div>
+        </div>

@@ -1,0 +1,9 @@
+        <div id="page-for">
+            <ul>
+                {% for data in page.items.all %}
+                <li>
+                    <img src="{{data.image.url}}" />
+                </li>
+                {% endfor %}
+            </ul>
+        </div>

@@ -1,0 +1,26 @@
+        <div id="page-footer">
+            <div class="logo">
+                <img src="{{page.logo.url}}" />
+            </div>
+            <div class="title">
+                Следите за  Актовитдерм <br/> в социальных сетях
+            </div>
+            <div class="icons">
+                {% for item in page.items.all %}
+                <div>  <img src="{{item.image.url}}" /> </div>  
+                {% endfor %}
+            </div>
+            <div class="info">
+                Данный сайт не является </br> публичной офертой
+            </div>
+            <br/>
+            <div class="copy">
+                {{ page.title }}
+            </div>
+            <div class="warring">
+                <img src="{{ page.image.url }}" />
+            </div>
+            <div class="agreement">
+                <a href="{{ page.link }}">Соглашение об обработке персональных данных</a>
+            </div>
+        </div>

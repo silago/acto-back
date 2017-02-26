@@ -1,0 +1,32 @@
+        <div id="page-orange">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    {{ page.title|striptags}}
+                </div>
+                <img class="logo" src="{{page.logo.url}}" />
+                {% with items=page.items.all|dictsort:"order" %}
+                <table class="border shadow">
+                    <tr>
+                        <td><img src="{{items.0.image.url}}" /></td>
+                        <td colspan=3 rowspan=3><img src="{{items.1.image.url}}" /> </td>
+                        <td colspan=2 rowspan=2><img src="{{items.2.image.url}}" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="{{items.3.image.url}}" /></td>
+                    </tr>
+                    <tr>
+                        <td> <img src="{{items.4.image.url}}" /></td>
+                        <td> <img src="{{items.5.image.url}}" /></td>
+                        <td> <img src="{{items.6.image.url}}" /></td>
+                    </tr>
+                </table>
+                {% endwith %}
+                <!--
+                    <img class="banner"  src="static/orange/photo.png" />
+                -->
+                <div class="clear"> </div>
+            </div>
+            <div class="triangle-down"> </div>
+        </div>

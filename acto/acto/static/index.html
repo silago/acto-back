@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" type="text/css" href="sf-webfont.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="http://api-maps.yandex.ru/2.0-stable/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+        <style type='text/css'>
+            @media screen and (max-width: 1317px) {
+                body {
+                    overflow-x:auto!important;
+                }
+            }
+
+            .triangle-up {
+                margin-bottom:-1.5px;
+            }
+            .triangle-down {
+                margin-top:-1.5px;
+            }
+            * {
+                border:none;
+            }
+
+            a {
+                color:#fff;
+                cursor:pointer;
+            }
+            body > div {
+                overflow-x:hidden;
+            }
+            body {
+                box-sizing: border-box;
+                overflow-x:hidden;
+                max-width: 1400px;
+                x-min-width: 1152px;
+                min-width: 1317px;
+                margin: 0 auto;
+                font-family:"San Francisco";
+                border-left:18px solid white;
+                border-right:18px solid white;
+            }
+            #head {
+                margin-left:18;
+            }
+            #head #phone {
+                top:18px;
+                right:18px;
+                position:absolute;
+            }
+            #head #menu {
+                margin-top: 22px;
+                padding-left: 0px;
+                width: 100%;
+                text-align: center;
+                box-sizing: inherit;
+                display: inline-block;
+                x-margin-left: -215px;
+                min-width:900px;
+                position:relative;
+                height:33px;
+            }
+            #head .select-city {
+                font-weight:bold;
+                cursor:pointer;
+                color:#47bae8;
+                display:inline-block;
+                position: relative;
+                x-top: -3px;
+            }
+            #head .buy-somewhere {
+                x-float:left;
+                display:inline-block;
+                font-weight:bold;
+                color:#6e86ae;
+                x-margin-right:30px;
+                position: relative;
+                x-top: -3px;
+            }
+            #head #menu ul {
+                x-float:left;
+                width:100%;
+                display:inline-block;
+                x-padding-left:18px;
+                text-align:left;
+                box-sizing:border-box;
+                padding-right:200px;
+            }
+            #head #menu li:nth-child(1) {
+                text-align:left;
+                x-margin-right:3%;
+            }
+            #head #menu li:last-child {
+                x-margin-right:0%;
+            }
+            #head #menu li {
+                text-align:left;
+                vertical-align:bottom;
+                display:inline-block;
+                list-style:none;
+                x-margin-right:50px;
+                x-width:20%;
+                color:#748bb2;
+                height:32px;
+                x-margin-right:6%;
+                margin-right:2.7em;
+            }
+
+            @media screen and (max-width: 1383px) {
+                #head #menu li {
+                    overflow-x:auto!important;
+                    margin-right:3%;
+                }
+            }
+            @media screen and (max-width: 1350px) {
+                #head #menu li {
+                    overflow-x:auto!important;
+                    margin-right:1.8em;
+                }
+            }
+            #head #menu .buy-somewhere {
+            }
+            #left-border {
+                display:none;
+                position: fixed;
+                width: 18px;
+                height: 100%;
+                left: 0px;
+                z-index: 1;
+                background-color: #fff;
+            }
+            #right-border {
+                display:none;
+                position: fixed;
+                width: 18px;
+                height: 100%;
+                right: 0px;
+            
+                z-index: 99;
+                background-color: #fff;
+            }
+            .clear {
+                clear:both;
+             }
+            * {
+                padding:0px; margin:0px;
+            }
+            #logo {
+                float:left;
+                x-margin-top:22px;
+                x-margin-left:32px;
+                margin-top:-2px;
+            }
+            #banner-top {
+                width:100%;
+                x-height: 388px;
+                x-background-color: #ffd245;
+                margin-top:21px;
+                x-margin-left:18px;
+                padding-bottom:100px;
+            }
+
+            #banner-top .right img {
+                margin-top:28px;
+                x-margin-right:18px;
+            }
+            #banner-top .right:after {
+                content: " ";
+                width: 0;
+                height: 0;
+                border-left: 1500px solid transparent;
+                border-bottom: 44px solid white;
+                left: 0px;
+                bottom: 0px;
+                position: absolute;
+            }
+            div#page-faq .logo img {
+                margin-left:9px;
+            }
+            #page-faq {
+                position:relative;
+                width:100%;
+                padding-bottom:160px;
+                min-height:490px;
+            }
+
+            #page-faq ul {
+                width:60%;
+                margin-top:30px;
+                margin-left:90px;
+            }
+            #page-faq li{
+                border-top:1px solid #979696;
+                color:#353535;
+            }
+            #page-faq li h5 {
+                cursor:pointer;
+                font-weight:normal;
+                font-size:22px;
+            }
+            #page-faq li:last-child {
+                border-bottom:1px solid #d1d2d3;
+            }
+            #page-faq li:first-child {
+                border-top:1px solid #d1d2d3;
+            }
+            #page-faq .logo {
+                margin-left:90px;
+            }
+            #page-faq li span.answer {
+                display:none;
+                color:#99aac6;
+                margin-top:16px;
+                margin-left:50px;
+                font-size:20px;
+            }
+            #page-faq li:before {
+                    margin-top: -3px;
+                    margin-right: 10px;
+            }
+            #page-faq li.active:before {
+                content:"▲";
+                color:#2c4f8a;
+            }
+            #page-faq li:before {
+                content:"▼";
+                color:#a7a9ac;
+            
+                float:left;
+                font-size:26px;
+            }
+            #page-faq li.active span.answer {
+                display:block;
+            }
+            #page-faq li {
+                padding:18px;
+                list-style:none;
+            }
+
+            #page-faq .side {
+                background-image:url('faq/side.png');
+                background-repeat:no-repeat;
+                position:absolute;
+                right:10px;
+                top:60px;
+                height:509px;
+                width:251px;
+                padding:40px;
+            }
+            #page-faq .side h4 {
+                text-transform:uppercase;
+                color:#d82f72;
+                font-size:18px;
+            }
+            #page-faq .side h5 {
+                text-transform:uppercase;
+                color:#2c4f8a;
+                font-size:18px;
+            }
+            #page-faq .side form {
+                margin-top:43px;
+            }
+            #page-faq .side form input {
+                font-size:22px;
+                display:block;
+                border:0px;
+                padding:5px;
+                border-top:1px solid #918f8f;
+                width:250px;
+            }
+            #page-faq .side form textarea {
+                font-size:22px;
+                display:block;
+                border:0px;
+                padding:5px;
+                border-top:1px solid #918f8f;
+                height:160px;
+                background:transparent;
+                width:250px;
+            }
+            #page-faq .side form button {
+                background: transparent;
+                border: 0px;
+                position: absolute;
+                top:490px;
+                left: 0px;
+            }
+
+            #banner-top .left {
+                background-position:100% 0px;
+                background-repeat: no-repeat;
+                background-image:url('background-top-left.png');
+                background-size: cover;
+                float:left;
+                x-width:960px;
+                x-height:388px;
+                width:70%;
+            }
+            #banner-top .left > .text-info > span {
+                display:block;
+                position: absolute;
+                left: 290px;
+                bottom: 85px;
+                color: white;
+                width: 175px;
+                font-size: 22px;
+                font-weight: bold;
+            }
+            #banner-top .left .text-info {
+                margin-left:53px;
+                position:relative;
+                top:50px;
+            }
+            #banner-top .right {
+
+                text-align: center;
+                float: right;
+                height: 410px;
+                background-color: #ffd245;
+                margin-right: 0;
+                padding-bottom:26px;
+                position: relative;
+                width: 30%;
+            }
+        /* for page */
+            div#page-for *  {
+                overflow-y:hidden;
+            }
+            div#page-for {
+                margin:99px 3px;
+                margin-bottom:50px;
+                margin-top:-15px;
+            }
+            div#page-for ul {
+                list-style:none;
+                letter-spacing: -1px;
+                word-spacing: -1px;
+                font-size: 0px;
+            }
+            div#page-for ul li {
+                display:inline-block;
+                text-align:center;
+                width: 25%;
+            }
+            div#page-for ul li:last-child {
+                margin-right:0px;
+            }
+            div#page-mint {
+                width:100%;
+                x-margin-left:18px;
+                margin-top:54px;
+                position:relative;
+                height:629px;
+            }
+            div#page-mint .content .text-info {
+                position:absolute;
+                right:70px;
+                top:80px;
+                font-size:20px;
+                width:620px;
+
+            }
+            div#page-mint .content {
+                width: 100%;
+                background-color:#00cabe;
+                height:451px;
+            }
+            div#page-mint .triangle-down {
+                width: 0;
+                height: 0;
+                border-left: 1600px solid transparent;
+                border-top: 64px solid #00cabe;
+            }
+            div#page-mint .triangle-up {
+                width: 0;
+                height: 0;
+                border-right: 1600px solid transparent;
+                border-bottom: 64px solid #00cabe;
+            }
+            div#page-mint .info {
+                position:absolute;
+                right:58px;
+                bottom:4%;
+                x-width:65%;
+                width:897px;
+            }
+            div#page-mint .content .logo {
+                position:absolute;
+                top:35px;
+                left:45px;
+            }
+
+            div#page-mint .hands {
+                position:absolute;
+                position: absolute;
+                bottom: 65px;
+                left: -1px;
+                max-width: 430px;
+            }
+            /* facts */
+            div#page-facts img.logo {
+                margin-left:19px;
+            }
+            div#page-facts {
+				margin:-40px 72px 60px;
+            }
+            div#page-facts ul {
+                margin-top:33px;
+            }
+            div#page-facts ul li {
+                display:inline-block;
+                width:24%;
+            }
+            div#page-facts ul li > div > div {
+                text-align:center;
+                padding-top:10px;
+                text-transform:lowercase;
+                font-size:16px;
+                color:#2c4f8a;
+            }
+            div#page-facts ul li > div >div.w196 { width:196px;  }
+            div#page-facts ul li > div >div.w202 { width:202px;  }
+            div#page-facts ul li > div >div.w234 { width:234px;  }
+            div#page-facts ul li > div >div.w283 { width:283px;  }
+            div#page-facts ul li > div {
+                padding-right:72px;
+            }
+
+
+
+            div#page-green .arrow-right, div#page-green .arrow-left {
+                color:#fff;
+                font-size:52px;
+				position: absolute;
+				top: 300px;
+            }
+            div#page-green .arrow-right {
+left: 27%;
+    margin-left: 479px;
+			}
+            div#page-green .arrow-left {
+				left: 3%;
+			}
+
+            div#page-green {
+                width:100%;
+                x-margin-left:18px;
+                margin-top:54px;
+                position:relative;
+                x-height: 951px;
+                height: 740px;
+            }
+
+            div#page-green .content .text-info {
+                position:absolute;
+                right:70px;
+                top:85px;
+                font-size:20px;
+                width:620px;
+            }
+
+            div#page-green .triangle-down {
+                width: 0;
+                height: 0;
+                border-left: 1600px solid transparent;
+                border-top: 64px solid #bed73a;
+            }
+
+            div#page-green .content {
+                background-color:#bed73a;
+                x-height:851px;
+                x-height: 651px;
+                height: 591px;
+                background-image: url(green/dots.png);
+                background-repeat: no-repeat;
+                background-position: 150px 200px;
+            }
+
+            div#page-green .triangle-up {
+                width: 0;
+                height: 0;
+                border-right: 1600px solid transparent;
+                border-bottom: 64px solid #bed73a;
+            }
+
+            div#page-green .content .info {
+                position:absolute;
+                right:230px;
+                bottom:-20px;
+            }
+
+            div#page-green .content .logo {
+                position:absolute;
+                top:35px;
+                left:45px;
+
+            }
+
+            div#page-green ul li {
+                width:920px;
+
+            }
+
+            div#page-green ul li {
+                margin-top:163px;
+                display:inline-block;
+                x-max-width:203px;
+                width:15%;
+                margin-right:92px;
+            }
+
+            div#page-green ul li:last-child {
+                width:27px;
+                margin-right:75px;
+            }
+                
+            div#page-green ul {
+                width:80%;
+                margin-left:100px;
+            }
+            div#page-green ul li{
+            }
+            div#page-green div.banner{
+                position:absolute;
+                top:219px;
+                x-right:120px;
+                text-align:center;
+                right:0%;
+                width:30%;
+            
+            }
+            div#page-green ul li.active span:before {
+                content: "";
+                position: absolute;
+                height: 30px;
+                width: 90px;
+                background-image: url(green/arrow-up.png);
+                left: 130px;
+                top: -27px;
+            }
+
+            div#page-green .starts {
+                display:none;
+                content: "";
+                position: absolute;
+                height: 110px;
+                width: 109px;
+                background-image: url(green/stars.png);
+                right: 270px;
+                bottom: 235px;
+            }
+
+            div#page-green ul li.active span {
+                background-repeat:no-repeat;
+                position:absolute;
+                x-width:800px;
+                width:60%;
+                height:200px;
+                background-image:url('green/bub.png');
+                display:inline-block;
+                padding:26px  74px;
+                padding-right:200px;
+                margin-top:100px;
+                left:30px;
+                top:383px;
+                background-size:contain;
+                width:845px;
+            }
+
+
+
+
+            div#page-why {
+                margin:99px 54px;
+                margin-top:0px;
+                overflow: initial;
+            }
+            div#page-why ul {
+                margin-top:52px;
+                margin-left:-10px;
+            }
+            div#page-why ul li {
+                display:inline-block;
+                width:18%;
+                margin-right:2%;
+            }
+            div#page-why ul li > div > div {
+                text-align:center;
+                padding-top:10px;
+            }
+            div#page-why ul li:last-child { margin-right:0px;  }
+            div#page-why ul li > div {
+                /* padding-right:72px; */
+                text-align:center;
+            }
+
+            div#page-why img.logo {
+                margin-left:29px;
+            }
+
+
+
+            div#page-blue {
+                x-margin-left:18px;
+                margin-top:54px;
+                position:relative;
+                width:100%;
+            }
+
+            div#page-blue .content .text-info {
+                position: absolute;
+                right: 70px;
+
+                position:absolute;
+                right:70px;
+                font-size:20px;
+                top:17px;
+                width:620px;
+            }
+            div#page-blue .triangle-down {
+                width: 0;
+                height: 0;
+                border-left: 1600px solid transparent;
+                border-top: 64px solid #8dd6f7;
+            }
+            div#page-blue .content {
+                position:relative;
+                width: 100%;
+                background-color: #8dd6f7;
+                height:620px;
+            }
+            div#page-blue .triangle-up {
+                width: 0;
+                height: 0;
+                border-right: 1600px solid transparent;
+                border-bottom: 64px solid #8dd6f7;
+            }
+            div#page-blue .content .info {
+                position:absolute;
+                right:230px;
+                bottom:-20px;
+            }
+
+            div#page-blue .content .logo {
+                position:absolute;
+                top:-25px;
+                left:45px;
+            }
+
+            div#page-blue ul {
+                margin-left: 5%;
+                width: 90%;
+                list-style: none;
+                margin-right: 5%;
+            }
+            div#page-blue ul li {
+                width:18%;
+                margin-right:20px;
+                margin-top:189px;
+                zdisplay:inline-block;
+                float:left;
+            }
+
+            div#page-blue ul li div {
+                position:relative;
+                margin-top:100px;
+            }
+            div#page-blue ul li div div{
+                padding-left:15px;
+                font-size:16px;
+                text-transform:uppercase;
+            }
+            div#page-blue ul li div div{
+                position:relative;
+                z-index:2;
+            }
+            div#page-blue ul li span{
+                    height:205px;
+                    display:block;
+            }
+            div#page-blue ul li div span{
+                z-index:1;
+                position:absolute;
+                left:-40px; top:-33px;
+            }
+
+
+            div#page-orange {
+                x-margin-left:18px;
+                x-margin-top:54px;
+                position:relative;
+                width: 100%;
+            }
+            div#page-orange .content .text-info {
+                position:absolute;
+                right:70px;
+                top:85px;
+                font-size:20px;
+                width:620px;
+            }
+
+
+            div#page-orange .content {
+                width: 100%;
+                background-color:#ffa730;
+                padding-bottom:300px;
+
+ background-image: url(orange/bg_dots.png);
+    background-repeat: no-repeat;
+    background-position: 95% 115%;
+            }
+            div#page-orange .triangle-down {
+                width: 0;
+                height: 0;
+                border-left: 1600px solid transparent;
+                border-top: 64px solid #ffa730;
+            }
+            div#page-orange .triangle-up {
+                width: 0;
+                height: 0;
+                border-right: 1600px solid transparent;
+                border-bottom: 64px solid #ffa730;
+            }
+
+            div#page-orange .content .logo {
+                position:absolute;
+                top:35px;
+                left:45px;
+            }
+            div#page-orange .content table td img {
+                width:100%;
+
+            }
+            div#page-orange .content table td {
+                x-margin-left:40px;
+                x-margin-right:40px;
+            }
+            div#page-orange .content table td {
+                background-color: rgba(0,0,0,0.8);
+                border-color: rgba(0, 0, 0, 0.0);
+                border-style: solid;
+                border-width: 8px 11px;
+                
+            }
+
+
+            div#page-orange .content table.border td {
+                border-width: 0px 0px;
+            }
+            div#page-orange .content table.shadow td {
+                box-shadow:0px 0px 1px 1px rgba(0,0,0,0.8)
+            }
+            div#page-orange .content table.shadow {
+                border-spacing:18px;
+            }
+            div#page-orange .content table.shadow td {
+                box-shadow:0px 0px 1px 3px rgba(0,0,0,0.8)
+            }
+
+            div#page-orange .content .banner {
+                top: 200px;
+                margin: 0px 1.2%;
+                position: relative;
+                width: 95%;
+                border-spacing:8px;
+            }
+            div#page-orange .content table {
+                x-margin-left: 3%;
+                x-margin-right: 3%;
+                x-display: none;
+                top: 177px;
+                position: relative;
+                position: relative;
+                margin: 0 auto;
+				max-width:1200px;
+                border-spacing:8px;
+            }
+
+
+            div#page-yellow .items ul {
+                background-color:#fff; padding-left:5%;     margin-top: -70px;
+            }
+
+            div#page-yellow {
+                overflow:visible!important;
+                x-margin-left:18px;
+                margin-top:-140px;
+                position:relative;
+                padding-bottom:80px;
+                width:100%;
+
+    z-index: 441;
+    x-border-left: 18px solid white;
+    x-border-right: 36px solid white;
+    x-margin-left:18px;
+    x-padding-right:18px;
+    x-padding-left:18px;
+    box-sizing: border-box;
+            }
+            div#page-yellow .content .text-info {
+                position:absolute;
+                right:70px;
+                top:85px;
+                font-size:20px;
+                width:620px;
+            }
+            div#page-yellow .content {
+                width: 100%;
+                width:100%;
+                border-top:1px solid #ffef45;
+                background-color:#ffef45;
+                x-height:500px;
+                background-image:url('yellow/dots.png');
+                background-repeat: no-repeat;
+                background-position: 480px 33px;
+            }
+            div#page-yellow .triangle-down {
+                width: 0;
+                height: 0;
+                border-left: 1600px solid transparent;
+                border-top: 64px solid #ffa730;
+            }
+            div#page-yellow .arrow-holder {
+                width:100%;
+                overflow:hidden;
+            }
+            div#page-yellow .triangle-up {
+                width: 0;
+                height: 0;
+                border-right: 1600px solid transparent;
+                border-bottom: 64px solid #ffef45;
+            }
+
+            div#page-yellow .content .logo {
+                position:absolute;
+                top:35px;
+                left:45px;
+            }
+
+            div#page-yellow .content > div.items {
+                position:relative;
+                background-repeat:no-repeat;
+                x-background-image:url('yellow/2-layers.png');
+                top:140px;
+                x-padding: 200px 55px;
+                x-padding-right:36px;
+                background-size:contain;
+                z-index: 2;
+                x-height:259px;
+                position: relative;
+                z-index: 888;
+                margin-left: -16px;
+                margin-right: -16px;
+            }
+
+            div#page-yellow .content > div.items > ul > li {
+                vertical-align:top;
+            }
+            div#page-yellow .content > div.items > ul > li:nth-child(1) > div {
+                padding-top:16px;
+            }
+            div#page-yellow .content > div.items > ul > li:nth-child(3) > div {
+                padding-top:16px;
+            }
+            div#page-yellow .content > div.items > ul > li:nth-child(4) > div {
+                padding-top:32px;
+            }
+            div#page-yellow .content > div.items > ul > li  * {
+                display:block;
+                text-align:left;
+            }
+            div#page-yellow .content > div.items > ul > li {
+                list-style:none;
+                x-float:left;
+                display:inline-block;
+                width:24%;
+                text-align:center;
+                margin-top: -10px;
+                x-margin-bottom: 40px;
+            }
+            div#page-yellow .content > div.items > ul > li > div {
+                padding-right:70px;
+            }
+            div#page-yellow .content > div.items > ul > li > div  > b {
+                display:block;
+                background-color:#ee5b71;
+                padding:3px;
+                min-width:188px;
+            }
+            div#page-yellow .content > div.items > ul > li > div  > div > b {
+                color:#fff;
+                display:inline-block;
+                background-color:#ee5b71;
+                padding:3px;
+                min-width:188px;
+            }
+            div#page-yellow .content > div.items > ul > li > div  > div > label {
+                color:#fff;
+                padding:4px;
+                display:inline-block;
+                background-color:#ee5b71;
+                min-width:138px;
+            }
+
+    
+
+            div#page-docs .content .logo {
+                position:absolute;
+                top:35px;
+                left:102px;
+            }
+            div#page-docs .content ul:after {
+                content: "▶";
+                position: absolute;
+                right: 3%;
+                top: 300px;
+                font-size: 32px;
+            }
+            div#page-docs .content ul:before {
+                content: "◀";
+                position: absolute;
+                left: 3%;
+                top: 300px;
+                font-size: 32px;
+            }
+
+            div#page-docs .content ul {
+    padding-top: 140px;
+    width: 94%;
+    text-align: center;
+    padding-left: 3%;
+    padding-right: 3%;
+
+            }
+            div#page-docs .content ul li {
+list-style: none;
+    /* float: left; */
+    background-position:center center;
+    background-image: url(docs/frame-1-.png);
+    background-repeat: no-repeat;
+    width: 31%;
+    height: 404px;
+    /* padding: 56px 15px; */
+    text-align: center;
+    display: inline-block;
+            }
+
+            div#page-docs {
+                margin:0 auto;
+                width:100%;
+                position:relative;
+                margin-bottom:50px;
+            }
+
+
+            div#page-bottom {
+                width:100%;
+                x-margin-left:18px;
+                margin-top:54px;
+                position:relative;
+                background:linear-gradient(to bottom,#fff,#363333);
+            }
+            div#page-bottom .content .map {
+                width:100%;
+            }
+
+            div#page-bottom .content {
+                position:relative;
+                width: 100%;
+                padding-bottom:50px;
+            }
+            div#page-bottom .content .banner-left {
+                position:absolute;
+                left:9px;
+                top:-1px;
+                width:284px;
+                background-color: rgba(255,255,255,0.9);
+                z-index:10;
+                padding:34px;
+            }
+            div#page-bottom .content .banner-left .banner-logo {
+
+            }
+            div#page-bottom .content .banner-left .city-selector {
+                text-decoration:none;
+                font-weight:bold;
+            }
+
+            div#page-bottom .content .banner-left .city-selector:before {
+                content:"▼";
+                color:#a7a9ac;
+                padding-right:5px;
+            }
+            div#page-bottom .content .banner-left ul li {
+                list-style:none;
+                border-top:1px solid #a7a9ac;
+                padding:16px 0px;
+            }
+            div#page-bottom .triangle-up {
+                width: 0;
+                height: 0;
+                border-left: 1600px solid transparent;
+                border-top: 94px solid #fff;
+                position: absolute;
+                top:0px;
+                z-index: 2;
+            }
+            div#page-bottom .banner-triangle-up {
+width: 0;
+    height: 0;
+    position: absolute;
+    top: 0px;
+    z-index: 2;
+    /* display: none; */
+    /* right: 0px; */
+    top: 0px;
+    z-index: 9;
+    margin-top: -10px;
+    z-index: 11;
+    border-right: 1600px solid white;
+    border-bottom: 94px solid transparent;
+    left: 0px;
+            }
+
+            div#page-bottom .content .banner-right {
+                position:absolute;
+                right:0px;
+                top:30px;
+                width:284px;
+                z-index:10;
+                padding:34px;
+                background-color:#8dd6f7;
+                text-align:center;
+                x-padding-bottom:18px;
+                padding-bottom:5px;
+                padding-top:70px;
+            }
+            div#page-bottom .content .banner-right img {
+                margin-bottom:16px;
+            }
+
+            div#page-footer {
+                background-color:#363333;
+                padding:30px;
+                min-height: 100px;
+            }
+            div#page-footer .icons {
+                float:right;
+            }
+
+            div#page-footer .icons img {
+                margin-left:25px;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div id="right-border">
+        </div>
+        <div id="left-border">
+        </div>
+        <div id="head">
+            <span id="menu">
+                <ul>
+                    <li><img src="./logo.png" id="logo"></li>
+                    <li>когда применяется?</li>
+                    <li>как  работает?</li>
+                    <li>кому подходит</li>
+                    <li class="nowrap">
+                        <span class="buy-somewhere">
+                            купить в аптеке
+                        </span>
+                    </li>
+                    <li class="nowrap">
+                        <span class="select-city">
+                           <span style="color:#2c4f8a">▼</span>
+                           <span class="selector">Комсомольск на амуре</span>
+                        </span>
+                    </li>
+                </ul>
+                <img
+                 style="position:absolute; right:0px; top:-7px; x-width:190px;"
+                 src="contact.png" />
+            </span>
+        </div>
+        <div class="clear"></div>
+        <div id="banner-top">
+            <div class="left">
+                <div class="text-info">
+                    <img src="akto-box-photo.png" />
+                    <span>
+                        Жидкая аэрозольная повязка&nbsp;Актовитдерм®
+                    </span>
+                </div>
+            </div>
+            <div class="right">
+                <img class="banner" src="top/banner-free.png" />
+                <br/>
+                <img class="button" src="top/button.png" />
+            </div>
+        </div>
+        <div class="clear"></div>
+
+
+        <div id="page-for">
+            <ul>
+                <li>
+					<img src="for/abrasion.png" />
+                </li>
+                <li>
+					<img src="for/callus.png" />
+                </li>
+                <li>
+					<img src="for/for_cuts.png" />
+                </li>
+                <li>
+					<img src="for/for_traums.png" />
+                </li>
+            </ul>
+        </div>
+
+        <div id="page-mint">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit.
+                </div>
+                <img class="logo" src="mint/logo-mint.png" />
+                <img class="hands" src="mint/hands.png" />
+            </div>
+            <div class="triangle-down"> </div>
+            <img class="info" src="mint/infographic.png" />
+        </div>
+        <div id="page-facts">
+            <img class="logo" src="facts/zag-fakts.png" />
+            <ul>
+                <li>
+
+                    <div>
+                    <img src="facts/20.png" />
+                    <div class="w196">
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <img src="facts/24.png" />
+                    <div class="w202">
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <img src="facts/150.png" />
+                    <div class="w234">
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <img src="facts/200.png" />
+                    <div class="w283">
+                         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+        <div id="page-green">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit.
+                </div>
+           <img class="logo" src="green/logo-green.png" />
+            <span class="starts"> </span>
+
+            <span class="arrow-left">
+                <img src="green/arrow-left.png" />
+            </span>
+
+            <ul>
+              <li class="active">
+                 <img src="green/dot1.png" />
+                 <span>
+                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit. Pellentesque facilisis et leo id finibus.
+                     <br/>
+                     Pellentesque consequat turpis non faucibus scelerisque. Curabitur mattis sem nec nisl fringilla, tristique tempus urna aliquam. Morbi molestie, massa sit amet efficitur auctor, mi ex ornare felis, non luctus nibh est et risus. Nunc quis vehicula eros. Ut nec rutrum tellus, sit amet ultricies lorem. Curabitur vitae libero sit amet dui mollis fermentum nec vel ipsum. Praesent fringilla ultrices tortor, non tempus elit placerat sed.
+                 </span>
+             </li>
+              <li>
+                 <img src="green/dot2.png" />
+             </li>
+              <li>
+                 <img src="green/dot3.png" />
+             </li>
+            </uL>
+            <span class="arrow-right">
+				<img src="green/arrow-right.png" />
+			</span>
+            <div class="banner">
+               <img src="green/buy-now.png" />
+               <br />
+               <br />
+               <img src="green/button.png" />
+            </div>
+            </div>
+            <div class="triangle-down"></div>
+        </div>
+
+
+
+        <div id="page-why">
+            <img class="logo" src="why/why-logo.png" />
+            <ul>
+                <li>
+
+                    <div>
+                    <img src="why/1.png" />
+                    <div class="w196">
+                         Lorem ipsum dolor sit amet.
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <img src="why/2.png" />
+                    <div class="">
+                         Lorem ipsum dolor sit amet.
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <img src="why/3.png" />
+                    <div class="">
+                         Lorem ipsum dolor sit amet.
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <img src="why/4.png" />
+                    <div class="">
+                         Lorem ipsum dolor sit amet.
+                    </div>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                    <img src="why/5.png" />
+                    <div class="">
+                         Lorem ipsum dolor sit amet.
+                    </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+        <div id="page-blue">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit.
+                </div>
+           <img class="logo" src="blue/logo-blue.png" />
+           <ul>
+             <li class="">
+                    <span>
+                <img src="blue/shake.png" />
+                    </span>
+                <div>
+                    <span>
+                        <img src="blue/1.png" />
+                    </span>
+                    <div>
+                        <h4> Встряхните<br/>Балон</h4>
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+            </li>
+             <li class="">
+                    <span>
+                <img src="blue/spray.png" />
+                    </span>
+                <div>
+                    <span>
+                        <img src="blue/2.png" />
+                    </span>
+                    <div>
+                        <h4>Распылите<br/>Актовитдерм</h4>
+                        <p>
+                            на поврежденный
+                            <br/>участок кожи
+                            <br/>в течении 1-3 секунд
+                            <br/>с расстояния 20см
+                        </p>
+                    </div>
+                </div>
+            </li>
+
+             <li class="">
+                    <span>
+                <img src="blue/time.png" />
+                    </span>
+                <div>
+                    <span>
+                        <img src="blue/3.png" />
+                    </span>
+                    <div>
+                        <h4>Дайте<br/>Высохнуть</h4>
+                        <p>
+                            Пленка образуется
+                            <br/>в течении 20 секунды
+                        </p>
+                    </div>
+                </div>
+            </li>
+             <li class="">
+                    <span>
+                <img src="blue/3spray.png" />
+                    </span>
+                <div>
+                    <span>
+                        <img src="blue/4.png" />
+                    </span>
+                    <div>
+                        <h4>Дайте<br/>Высохнуть</h4>
+                        <p>
+                            Пленка образуется
+                            <br/>в течении 20 секунды
+                        </p>
+                    </div>
+                </div>
+            </li>
+             <li class="">
+                <span>
+                    <img src="blue/skin.png" />
+                </span>
+                <div>
+                    <span>
+                        <img src="blue/5.png" />
+                    </span>
+                    <div>
+                        <h4>Дайте<br/>Высохнуть</h4>
+                        <p>
+                            Пленка образуется
+                            <br/>в течении 20 секунды
+                        </p>
+                    </div>
+                </div>
+            </li>
+           </uL>
+            </div>
+            <div class="triangle-down">
+			</div>
+        </div>
+
+
+
+
+        <div id="page-faq">
+            <div class="logo">
+                <img src="faq/faq-logo.png" />
+            </div>
+            <ul class="list">
+                <li class="active">
+                    <h5>Как помогает?</h5>
+                    <span class="answer">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum maximus augue, ut interdum turpis euismod ac. In et sem eget purus consequat volutpat. Curabitur in metus in nunc imperdiet suscipit. Nullam sed lectus pulvinar, consequat magna quis, consequat justo. Aenean quis eleifend massa, eu pharetra lorem. In ut leo nibh. Sed euismod quam sem, non vulputate dui vehicula et.
+                    </span>
+                </li>
+                <li>
+                    <h5>Как помогает?</h5>
+                    <span class="answer">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum maximus augue, ut interdum turpis euismod ac. In et sem eget purus consequat volutpat. Curabitur in metus in nunc imperdiet suscipit. Nullam sed lectus pulvinar, consequat magna quis, consequat justo. Aenean quis eleifend massa, eu pharetra lorem. In ut leo nibh. Sed euismod quam sem, non vulputate dui vehicula et.
+                    </span>
+                </li>
+            </ul>
+            <div class="side">
+                <h4> Не нашли ответ? </h4>
+                <h5> Задайте вопрос! </h5>
+                <form>
+                    <input type=text placeholder="ВАШЕ ИМЯ" />
+                    <input type=text placeholder="ВАШЕ ИМЯ" />
+                    <input type=text placeholder="ВАШЕ ИМЯ" />
+                    <textarea placeholder="ВАШЕ ВОПРОС"></textarea>
+                    <input type=text placeholder="АНТИ СПАМ КОД" />
+                <button><img src="faq/button.png" /> </button>
+                </form>
+            </div>
+        </div>
+
+        <div id="page-orange">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit.
+                </div>
+                <img class="logo" src="orange/logo-photo.png" />
+                <table class="border shadow">
+                    <tr>
+                        <td><img src="orange/1.png" /></td>
+                        <td colspan=3 rowspan=3><img src="orange/4.png" /> </td>
+                        <td colspan=2 rowspan=2><img src="orange/5.png" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="orange/2.png" /></td>
+                    </tr>
+                    <tr>
+                        <td> <img src="orange/3.png" /></td>
+                        <td> <img src="orange/6.png" /></td>
+                        <td> <img src="orange/7.png" /></td>
+                    </tr>
+                </table>
+                <!--
+                    <img class="banner"  src="orange/photo.png" />
+                -->
+                <div class="clear"> </div>
+            </div>
+            <div class="triangle-down"> </div>
+        </div>
+        <div id="page-yellow">
+            <div class="arrow-holder">
+            <div class="triangle-up"> </div>
+            </div>
+            <div class="content">
+                <div class="text-info">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit.
+                </div>
+                <img class="logo" src="yellow/logo-yellow.png" />
+                <div class="items">
+                <img src="yellow/top.png" style="width:100%;"/>
+                    <ul
+                        style=""
+                    >
+                        <li>
+                            <div class="list-item">
+                                <span>
+Nulla sit amet tristique tortor. Nulla vel justo aliquet, sodales purus vitae, fermentum lacus. Suspendisse at congue metus. Etiam posuere nunc vel pulvinar placerat. Nulla sit amet urna a magna faucibus dapibus. Duis tristique libero et ante ultricies semper. Quisque vulputate, ex non semper ultricies, urna orci iaculis leo, sed auctor justo velit eget lectus. Nunc vel consectetur quam, a tincidunt velit. Donec dignissim pretium tortor, ut luctus quam imperdiet sed. Praesent pretium sapien augue, et luctus tellus elementum vel. Sed iaculis porta dapibus. Pellentesque vitae pretium nisl, in mollis ipsum. Vivamus quam eros, cursus a convallis eget, pretium malesuada eros. Proin est sapien, efficitur eu felis vel, commodo elementum urna.
+
+                                </span>
+                                <div>
+                                <b>
+                                    Таня К.
+                                </b>
+                                <label>
+                                    г. Москва
+                                </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item">
+                                <span>
+Nulla sit amet tristique tortor. Nulla vel justo aliquet, sodales purus vitae, fermentum lacus. Suspendisse at congue metus. Etiam posuere nunc vel pulvinar placerat. Nulla sit amet urna a magna faucibus dapibus. 
+                                </span>
+                                <div>
+                                <b>
+                                    Таня К.
+                                </b>
+                                <label>
+                                    г. Москва
+                                </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item">
+                                <span>
+                                    Ожог ткани кожи блаблабла
+                                    Ожог ткани кожи блаблабла
+                                    Ожог ткани кожи блаблабла
+                                    Ожог ткани кожи блаблабла
+                                </span>
+                                <div>
+                                <b>
+                                    Таня К.
+                                </b>
+                                <label>
+                                    г. Москва
+                                </label>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="list-item">
+                                <span>
+                                    Ожог ткани кожи блаблабла
+                                    Ожог ткани кожи блаблабла
+                                    Ожог ткани кожи блаблабла
+                                    Ожог ткани кожи блаблабла
+                                </span>
+                                <div>
+                                <b>
+                                    Таня К.
+                                </b>
+                                <label>
+                                    г. Москва
+                                </label>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <img src="yellow/bottom.png" style="width:100%;"/>
+                    </div>
+            </div>
+            <div class="clear"> </div>
+        </div>
+        <div id="page-docs">
+            <div class="content">
+                <img src="docs/logo-sertificats.png" class="logo" />
+                <ul>
+                    <li>
+
+                    </li>
+                    <li>
+
+                    </li>
+                    <li>
+
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div id="page-bottom">
+                        <div class="banner-triangle-up"></div>
+            <div class="triangle-up">
+            </div>
+            <div class="content">
+                <div class="banner-left">
+                    <img 
+                        style="padding-bottom:40px;"
+                        class="banner-logo" src="bottom/logo.png" />
+                    <a class="city-selector">Москва</a>
+                    <br/>
+                    <br/>
+                    <ul>
+                        <li>
+                            Ул. Пятницкая, д. 15А
+                        </li>
+                        <li>
+                            Ул. Новокузнецкая, д. 62
+                        </li>
+                        <li>
+                            Ул. Самотечная, д. 2
+                        </li>
+                    </ul>
+                </div>
+                <div class="center">
+                    <!-- <img class="map" src="bottom/map.png" /> -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d2245.8740119711547!2d37.62614400394922!3d55.74331799521757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2sru!4v1482783316357" width="100%" height="746px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                </div>
+                <div class="banner-right">
+                        <img src="bottom/free-delivery.png">
+                        <br/>
+                        <img src="bottom/button.png">
+                        <br/>
+                        <img src="bottom/photo.png">
+
+                </div>
+            </div>
+        </div>
+        <div id="page-footer">
+            <div class="icons">
+                <img src="footer/f.png" />
+                <img src="footer/i.png" />
+                <img src="footer/v.png" />
+                <img src="footer/o.png" />
+            </div>
+        </div>
+        <script>
+            $('#page-faq .list li h5').click(function(ev,el){
+                //console.log(this);
+                var el = $(this);
+                if (!el.parent().hasClass('active')) {
+                    $(el).parent().parent().find('.active').removeClass('active');
+                    el.parent().addClass('active')
+                }
+            });
+        </script>
+        <script type="text/javascript">
+         // window.onload = function () {
+         //     jQuery(".select-city span.selector").text(ymaps.geolocation.city);
+         // }
+        </script>
+    </body>
+</html>

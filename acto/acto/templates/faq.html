@@ -1,0 +1,38 @@
+        <div id="page-faq">
+            <div class="logo">
+                <!-- <img src="faq/faq-logo.png" /> -->
+                <img src="{{page.logo.url}}" />
+            </div>
+            <ul class="list">
+                {% for item in page.items.all %}
+                <li class="active">
+                <h5>{{item.caption|striptags}}
+                    <!-- Как помогает? -->
+                </h5>
+                    <span class="answer">
+                        {{item.text|safe}}
+                        <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum maximus augue, ut interdum turpis euismod ac. In et sem eget purus consequat volutpat. Curabitur in metus in nunc imperdiet suscipit. Nullam sed lectus pulvinar, consequat magna quis, consequat justo. Aenean quis eleifend massa, eu pharetra lorem. In ut leo nibh. Sed euismod quam sem, non vulputate dui vehicula et. -->
+                    </span>
+                </li>
+                {% endfor %}
+                <!-- <li> -->
+                <!--     <h5>Как помогает?</h5> -->
+                <!--     <span class="answer"> -->
+                <!--         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec dictum maximus augue, ut interdum turpis euismod ac. In et sem eget purus consequat volutpat. Curabitur in metus in nunc imperdiet suscipit. Nullam sed lectus pulvinar, consequat magna quis, consequat justo. Aenean quis eleifend massa, eu pharetra lorem. In ut leo nibh. Sed euismod quam sem, non vulputate dui vehicula et. -->
+                <!--     </span> -->
+                <!-- </li> -->
+            </ul>
+            <div class="side">
+                <h4> Не нашли ответ? </h4>
+                <h5> Задайте вопрос! </h5>
+                <form>
+                    <input type=text placeholder="ВАШЕ ИМЯ" />
+                    <input type=text placeholder="ВАШЕ ИМЯ" />
+                    <input type=text placeholder="ВАШЕ ИМЯ" />
+                    <textarea placeholder="ВАШЕ ВОПРОС"></textarea>
+                    <input type=text placeholder="АНТИ СПАМ КОД" />
+                <button><img src="static/faq/button.png" /> </button>
+                </form>
+            </div>
+        </div>
+

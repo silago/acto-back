@@ -1,0 +1,35 @@
+        <div id="page-blue">
+            <div class="triangle-up"> </div>
+            <div class="content">
+                <div class="text-info">
+                    {{page.caption|safe}}
+                    <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam egestas mi id iaculis interdum. Nam lacinia dui massa, quis viverra ante dictum ac. Ut commodo justo eget mi gravida, eu malesuada nisi blandit. -->
+                </div>
+                <img class="logo" src="{{page.logo.url}}" />
+           <ul>
+               {% for item in page.items.all %}
+               <li>
+                    <span>
+                        <img src="{{ item.image.url}}" />
+                    </span>
+                    <div>
+                        <span>
+                            <img src="{{item.subimage.url}}" />
+                       </span> 
+                       <div>
+                           <h4>
+                               {{item.caption|safe}}
+                           </h4>
+                           <p>
+                           {{item.text|safe}}
+                           </p>
+                       </div>
+
+                    </div>
+               </li>
+               {% endfor %}
+           </uL>
+            </div>
+            <div class="triangle-down">
+			</div>
+        </div>

@@ -1,0 +1,30 @@
+
+/** Regular */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 400;
+  src: 
+    url("fonts/__regular.ttf");
+}
+
+/** Medium */
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 500;
+  src: 
+    url("fonts/__regular.ttf");
+}
+
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 600;
+  src:
+    url("fonts/__bold.ttf");
+}
+
+@font-face {
+  font-family: "San Francisco";
+  font-weight: 700;
+  src: 
+    url("fonts/__semibold.ttf");
+}
